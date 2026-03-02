@@ -1,29 +1,30 @@
 @import "tailwindcss";
-::-webkit-scrollbar {
-  width: 10px;
-}
 
+/* 1. Enable Tailwind v4 Dark Mode Variant */
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* 2. Global Transitions & Scrollbar */
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #815832;
-}
-
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 5px;
+  @apply bg-slate-400 dark:bg-indigo-600 rounded-full;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+
+/* 3. Theme-aware Body Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  @apply transition-colors duration-500 bg-slate-50 text-slate-900;
+}
+
+.dark body {
+  @apply bg-[#030014] text-white;
 }

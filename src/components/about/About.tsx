@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const About = () => {
   return (
-    <section id="about" className="py-32 max-w-6xl mx-auto px-6">
+    <section id="about" className="py-32 max-w-6xl mx-auto px-6 transition-colors duration-500">
       <div className="grid md:grid-cols-2 gap-16 items-center">
         {/* Left Side: Text Content */}
         <motion.div 
@@ -10,30 +10,35 @@ export const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-white mb-8">
-            <span className="text-indigo-500 font-mono text-2xl block mb-2">01. Identity</span>
+          {/* FIXED: Changed text-white to text-slate-900 dark:text-white */}
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-8">
+            <span className="text-indigo-600 dark:text-indigo-400 font-mono text-2xl block mb-2">01. Identity</span>
             Engineering meaningful <br/> digital solutions.
           </h2>
-          <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+
+          {/* FIXED: Changed text-gray-400 to text-slate-600 dark:text-slate-400 */}
+          <div className="space-y-4 text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
             <p>
               I am an IT professional dedicated to bridging the gap between complex backend logic and 
               intuitive frontend experiences. My approach is rooted in clean code and scalable architecture.
             </p>
             <p>
-              Currently focusing on <span className="text-indigo-400 italic">Cloud Architecture</span> and 
-              <span className="text-indigo-400 italic"> Modern Web Frameworks</span> to build 
+              Currently focusing on <span className="text-indigo-600 dark:text-indigo-400 italic font-medium">Cloud Architecture</span> and 
+              <span className="text-indigo-600 dark:text-indigo-400 italic font-medium"> Modern Web Frameworks</span> to build 
               high-performance applications.
             </p>
           </div>
         </motion.div>
+
+        {/* Right Side: Profile Photo + Code Card Stack */}
         <div className="relative">
-        
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="relative z-10 w-full max-w-sm ml-auto overflow-hidden rounded-2xl border border-white/10 shadow-2xl group"
+            /* FIXED: Added bg-slate-200 dark:bg-white/10 and border-slate-200 dark:border-white/10 */
+            className="relative z-10 w-full max-w-sm ml-auto overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 shadow-2xl group"
           >
-            <div className="absolute inset-0 bg-indigo-500/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+            <div className="absolute inset-0 bg-indigo-500/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
             <img 
               src="./me.jpeg" 
               alt="Akash Tiwari"
@@ -41,12 +46,13 @@ export const About = () => {
             />
           </motion.div>
 
-        
+          {/* The Code Card Layer */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="absolute -bottom-10 -left-10 z-20 hidden lg:block w-72 rounded-xl bg-[#111]/90 backdrop-blur-md border border-white/10 p-1 shadow-2xl"
+            /* FIXED: bg-slate-900 (dark card) always looks better for code, or use white for light mode */
+            className="absolute -bottom-10 -left-10 z-20 hidden lg:block w-72 rounded-xl bg-slate-900/95 dark:bg-[#111]/90 backdrop-blur-md border border-slate-700 dark:border-white/10 p-1 shadow-2xl"
           >
             <div className="flex gap-1.5 p-3 border-b border-white/5">
               <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
